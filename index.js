@@ -30,32 +30,20 @@ const buttons = document.querySelectorAll("button")
 const display = document.querySelector(".display")
 
 operands = ['+','-','*','/']
-nums = ['0','1','2','3','4','5','6','7','8','9']
 
 function getOperand(operation) {
     return operation.filter(char => operands.includes(char));
 }
-let operation = []
+
 
 buttons.forEach((button) =>{
     
     button.addEventListener('click', () => {
-
-    let buttontext = button.textContent
-
-    operation.push(buttontext)
-    console.log(operation)
-    const last = operation[operation.length-1]
-
-    if (buttontext == "="){
-        let currentValue = display.getAttribute("value") || "";
-        display.setAttribute("value", currentValue + buttontext)
-    }
-    else if (nums.includes(buttontext)){
-        let currentValue = display.getAttribute("value") || "";
-        display.setAttribute("value", currentValue + buttontext)
-    }
+    let currentValue = display.getAttribute("value") || "";
+    display.setAttribute("value", currentValue + button.textContent)
     
+    const operation = display.getAttribute("value").split("")
+    const last = operation[operation.length-1]
     console.log('operation  ' + operation)
     console.log('last  ' + last)
 
