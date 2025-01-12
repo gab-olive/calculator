@@ -87,6 +87,12 @@ buttons.forEach((button) =>{
         display.setAttribute("value", "")
         operation = []
     }
+
+    if (operands.includes(last2) && operands.includes(last)){
+        operation.pop()
+        
+
+    }
 })
 
 })
