@@ -61,6 +61,10 @@ buttons.forEach((button) =>{
     console.log('last: ' + last)
     console.log('last2: ' + last2)
 
+    if (operation.length == 1 && operands.includes(last)){
+        display.setAttribute("value", "")
+    } 
+
     if (last == operand){ 
         display.setAttribute("value", n1)
     }
