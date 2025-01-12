@@ -4,7 +4,7 @@ body {
     align-items:center;
     justify-content: center;
     height:100vh;
-    background-color: rgb(75, 89, 114);
+    background-color: #FFFDEC;
 }
 
 .calculator-container {
@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     justify-content: center;
     border-radius: 10px;
-    background-color: rgb(56, 50, 50);
+    background-color: #4B5945;
     padding: 20px;
     gap: 16px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
@@ -23,11 +23,11 @@ body {
     display: flex;
     align-items: center;
     height: 100px;
-    padding: 0px;
-    background-color: rgba(34, 13, 13, 0.5);
-    border-radius: 10px;
+    padding: 10px;
+    background-color: #FFE2E2;
+    border-radius: 6px;
     gap: 15px;
-
+    margin-bottom: 20px;
 }
 
 #zero {
@@ -64,4 +64,55 @@ button {
     flex-wrap: wrap;
     justify-content: center;
     max-width: 400px;
+}
+
+.header {
+    background-color: #86A788;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    border-radius: 0px 0px 10px 10px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.footer {
+    background-color: #86A788;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    border-radius: 10px 10px 0px 0px;
+    font-size: 1.5rem;
+}
+
+.display {
+    width: 100%;
+    height: 50px;
+    font-size: 2rem;
+    text-align: right;
+    padding: 10px;
+    border: none;
+    border-radius: 0px;
+    background-color: #ffcfcf4b;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    color: #333;
+}
+
+.button {
+    width: 90px;
+    height: 80px;
+    background-color: #86A788;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 9px;
 }

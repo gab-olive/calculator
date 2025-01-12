@@ -58,9 +58,10 @@ buttons.forEach((button) =>{
     console.log('operand:' + operand)
     const last = operation[operation.length-1]
     const last2 = operation[operation.length-2]
+    console.log('last: ' + last)
+    console.log('last2: ' + last2)
 
     if (last == operand){ 
-        console.log('last ' + last)
         display.setAttribute("value", n1)
     }
 
@@ -89,8 +90,11 @@ buttons.forEach((button) =>{
     }
 
     if (operands.includes(last2) && operands.includes(last)){
-        operation.pop()
-        
+        console.log('operation before: ' + operation)
+        operation.splice(operation.length-2, 1)
+        console.log('operation after: ' + operation)
+
+
 
     }
 })
