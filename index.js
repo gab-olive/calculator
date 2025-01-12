@@ -62,8 +62,10 @@ buttons.forEach((button) =>{
     console.log('last2: ' + last2)
 
     if (operation.length == 1 && operands.includes(last)){
-        display.setAttribute("value", "")
+        display.setAttribute("value", "jabez")
+        operation = []
     } 
+    else {
 
     if (last == operand){ 
         display.setAttribute("value", n1)
@@ -97,10 +99,8 @@ buttons.forEach((button) =>{
         console.log('operation before: ' + operation)
         operation.splice(operation.length-2, 1)
         console.log('operation after: ' + operation)
-
-
-
     }
+}
 })
 
 })
