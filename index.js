@@ -29,7 +29,9 @@ function operate(operator,n1,n2) {
 const buttons = document.querySelectorAll("button")
 const display = document.querySelector(".display")
 
-operands = ['+','-','*','/']
+let operands = ['+','-','*','/']
+let nums = ['0','1','2','3','4','5','6','7','8','9']
+let operation = []
 
 function getOperand(operation) {
     return operation.filter(char => operands.includes(char));
@@ -39,46 +41,53 @@ function getOperand(operation) {
 buttons.forEach((button) =>{
     
     button.addEventListener('click', () => {
-    let currentValue = display.getAttribute("value") || "";
-    display.setAttribute("value", currentValue + button.textContent)
-    
-    const operation = display.getAttribute("value").split("")
-    const last = operation[operation.length-1]
-    console.log('operation  ' + operation)
-    console.log('last  ' + last)
+    let buttonText = button.textContent
+    let displayValue = display.getAttribute("value");
 
+    if (nums.includes(buttonText)){
+    display.setAttribute("value", displayValue + buttonText)}
+
+    operation.push(buttonText)
     let operand_list = getOperand(operation);
     let operand = operand_list[0]
-    if (operand_list.length > 1){
-        let operandIndex = operation.indexOf(operand)
-        let n1 = parseInt(operation.slice(0, operandIndex).join(''))
-        let n2 = parseInt(operation.slice(operandIndex + 1) .join(''))
+    let operandIndex = operation.indexOf(operand)
+    let n1 = parseInt(operation.slice(0, operandIndex).join(''))
+    let n2 = parseInt(operation.slice(operandIndex + 1) .join(''))
+    console.log('n1: ' + n1)
+    console.log('n2: ' + n2)
+    console.log('operand:' + operand)
+    const last = operation[operation.length-1]
+    const last2 = operation[operation.length-2]
+
+    if (last == operand){ 
+        console.log('last ' + last)
+        display.setAttribute("value", n1)
+    }
+
+    if (n2 || n2 == 0){
+        display.setAttribute("value", n2)
+    }
+
+    if (operands.includes(operand) && last == "="){
+        display.setAttribute("value", "")
         let result = operate(operand, n1, n2)
         display.setAttribute("value", result)
         console.log("n1,n2: " + n1 + ' '  + n2)
-        result = operate(operand, result, last)
-        display.setAttribute("value", result)
+        operation = [result]
     }
-    if (last == "="){
-        console.log('operand list: ' + operand_list)
 
-        operation.pop()
-        console.log('operation working with: ' + operation)
-        let operandIndex = operation.indexOf(operand)
-        let n1 = parseInt(operation.slice(0, operandIndex).join(''))
-        let n2 = parseInt(operation.slice(operandIndex + 1) .join(''))
-        console.log('n1: ' + n1)
-        console.log('n2: ' + n2)
+    if (operands.includes(operand) && !isNaN(n1) && !isNaN(n2) && operand_list.length == 2){
         let result = operate(operand, n1, n2)
-        console.log(result)
         display.setAttribute("value", result)
-}
-    if (last == "C"){
-        display.setAttribute("value", '')
+        operation = [result]
+        operation.push(operand)
     }
-}
+    
+    if (last == "C"){
+        display.setAttribute("value", "")
+        operation = []
+    }
+})
 
-)})
-
-
+})
  
